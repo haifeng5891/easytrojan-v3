@@ -23,7 +23,7 @@
 
 trojan_passwd=$1
 caddy_domain=$2
-address_ip=$(curl ipv4.ip.sb)
+address_ip=$(curl ip.sb)
 long_number=$(echo "$address_ip" | awk -F. '{printf "%u\n", $4 * 256^3 + $3 * 256^2 + $2 * 256 + $1}')
 nip_domain="ip$long_number.mobgslb.tbcache.com"
 trojan_link="trojan://$trojan_passwd@$address_ip:443?security=tls&sni=$nip_domain&alpn=h2%2Chttp%2F1.1&fp=chrome&type=tcp#easytrojan-$address_ip"
